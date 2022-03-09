@@ -19,6 +19,18 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-//Route::get('modules', 'App\Http\Controllers\ModuleController@getModule');
 
+/*** MODULES ***/
+
+// Créer un module
+Route::post('modules/create',[ModuleController::class,'createModule']);
+// Afficher tous les modules
 Route::get('modules',[ModuleController::class,'getModule']);
+// Afficher un module selon l'id
+Route::get('modules/{id}',[ModuleController::class,'getModuleById']);
+// Update un module
+Route::put('modules/{id}/edit',[ModuleController::class,'updateModule']);
+// Supprimer un module
+Route::delete('modules/{id}/edit',[ModuleController::class,'deleteModule']);
+
+
