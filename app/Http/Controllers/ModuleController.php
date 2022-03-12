@@ -9,7 +9,6 @@ class ModuleController extends Controller
 {
     public function getModule()
     {
-
         return response()->json(Module::all());
     }
 

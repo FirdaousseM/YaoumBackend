@@ -33,4 +33,21 @@ Route::put('modules/{id}/edit',[ModuleController::class,'updateModule']);
 // Supprimer un module
 Route::delete('modules/{id}/edit',[ModuleController::class,'deleteModule']);
 
+/*** PARAGRAPHES ***/
+
+// Créer un paragraphe
+Route::post('modules/create',[ModuleController::class,'createParagraphe']);
+// Afficher tous les paragraphes dans l'ordre
+//Route::get('modules/{id}',[ModuleController::class,'getModule']);
+// Get un paragraphe par selon l'id
+//Route::get('modules',[ModuleController::class,'getModule']);
+// Update un paragraphe
+//Route::put('modules/{id}/edit',[ModuleController::class,'updateModule']);
+// Supprimer un paragraphe
+//Route::delete('modules/{id}/edit',[ModuleController::class,'deleteModule']);
+
+
+
+
+
 

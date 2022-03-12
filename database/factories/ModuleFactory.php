@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Paragraphe;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -16,8 +17,7 @@ class ModuleFactory extends Factory
     {
         return [
             'titre' => $this->faker->sentence(3),
-            'description' => $this->faker->unique()->sentence(12),
-            'contenu' => $this->faker->unique()->paragraph(5), 
+            'description' => $this->faker->unique()->sentence(12)
         ];
     }
 }
