@@ -15,10 +15,16 @@ class ModuleController extends Controller
     public function getModuleById($id)
     {
 
-        $module = Module::find($id);
+        $module = array();
+        array_push($module, Module::find($id));
+
+        foreach(ChapitreController::getAllChapitresByIdModule($id) as $chapitre){
+            array_push($module, $chapitre);
+        }
+        
 
         // if (is_null($module))
-        //     return response()->json(['message' => 'pas de module pour cette id'], 404);
+        // return response()->json(['message' => 'pas de module pour cette id'], 404);
 
         return response()->json($module);
     }
