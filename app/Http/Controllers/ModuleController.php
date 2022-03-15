@@ -7,7 +7,7 @@ use App\Models\Module;
 
 class ModuleController extends Controller
 {
-    public function getModule()
+    public function getAllModules()
     {
         return response()->json(Module::all());
     }
@@ -56,5 +56,12 @@ class ModuleController extends Controller
 
         $module->delete();
         return response(null);
+    }
+
+    public static function getAllModulesByIdProgramme($id)
+    {
+        $modules = Module::all()->where('id_programme', $id)->sortBy("id");
+
+        return $modules;
     }
 }

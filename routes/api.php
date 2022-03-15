@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\ChapitreController;
+use App\Http\Controllers\ProgrammeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -24,15 +25,15 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 /*** PROGRAMMES ***/
 
 // Créer un Programme
-Route::post('modules/create',[ModuleController::class,'createModule']);
+Route::post('programmes/create',[ProgrammeController::class,'createModule']);
 // Afficher tous les programmes
-Route::get('modules',[ModuleController::class,'getModule']);
+Route::get('programmes',[ProgrammeController::class,'getAllProgrammes']);
 // Afficher programme selon l'id
-Route::get('modules/{id}',[ModuleController::class,'getModuleById']);
+Route::get('programmes/{id}',[ProgrammeController::class,'getProgrammeById']);
 // Update un programme
-Route::put('modules/{id}/edit',[ModuleController::class,'updateModule']);
+Route::put('programmes/{id}/edit',[ProgrammeController::class,'updateProgramme']);
 // Supprimer un programme
-Route::delete('modules/{id}/edit',[ModuleController::class,'deleteModule']);
+Route::delete('programmes/{id}/edit',[ProgrammeController::class,'deleteProgramme']);
 
 
 /*** MODULES ***/
@@ -40,7 +41,7 @@ Route::delete('modules/{id}/edit',[ModuleController::class,'deleteModule']);
 // Créer un module
 Route::post('modules/create',[ModuleController::class,'createModule']);
 // Afficher tous les modules
-Route::get('modules',[ModuleController::class,'getModule']);
+Route::get('modules',[ModuleController::class,'getAllModules']);
 // Afficher un module selon l'id
 Route::get('modules/{id}',[ModuleController::class,'getModuleById']);
 // Update un module

@@ -17,7 +17,11 @@ class CreateModulesTable extends Migration
             $table->id();
             $table->string('titre');
             $table->text('description');
+            $table->bigInteger('id_programme')->unsigned()->index();
             $table->timestamps();
+
+            $table->foreign('id_programme')->references('id')->on('programmes')->onDelete('cascade');
+
         });
     }
 
@@ -28,6 +32,12 @@ class CreateModulesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('modules');
+        Schema::dropIfExists('modules', function (Blueprint $table) {
+
+            $table->dropForeign('modules_id_programme_foreign');
+            $table->dropIndex('modules_id_programme_index');
+            $table->dropColumn('id_programme');
+        });
+
     }
 }

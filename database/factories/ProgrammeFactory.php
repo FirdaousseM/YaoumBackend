@@ -2,11 +2,9 @@
 
 namespace Database\Factories;
 
-use App\Models\Paragraphe;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
 
-class ModuleFactory extends Factory
+class ProgrammeFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -16,11 +14,9 @@ class ModuleFactory extends Factory
     public function definition()
     {
         return [
-            'titre' => $this->faker->sentence(3),
+            'titre' => $this->faker->sentence(5),
             'description' => $this->faker->unique()->sentence(12),
-            'id_programme' => $this->faker->numberBetween(1,5)
+            'domaine' => $this->faker->word() 
         ];
     }
 }
-
-?>
