@@ -21,6 +21,20 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
+/*** PROGRAMMES ***/
+
+// Créer un Programme
+Route::post('modules/create',[ModuleController::class,'createModule']);
+// Afficher tous les programmes
+Route::get('modules',[ModuleController::class,'getModule']);
+// Afficher programme selon l'id
+Route::get('modules/{id}',[ModuleController::class,'getModuleById']);
+// Update un programme
+Route::put('modules/{id}/edit',[ModuleController::class,'updateModule']);
+// Supprimer un programme
+Route::delete('modules/{id}/edit',[ModuleController::class,'deleteModule']);
+
+
 /*** MODULES ***/
 
 // Créer un module
@@ -48,6 +62,8 @@ Route::get('modules/{idMod}/edit/content/{idChap}',[ChapitreController::class,'g
 Route::put('modules/{idMod}/edit/content/{idChap}',[ChapitreController::class,'updateChapitre']);
 // Supprimer un chapitre
 Route::delete('modules/{idMod}/edit/content/{idChap}',[ChapitreController::class,'deleteChapitre']);
+
+
 
 
 

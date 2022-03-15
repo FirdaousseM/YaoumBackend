@@ -31,12 +31,12 @@ class ChapitreController extends Controller
         return response($chapitre);
     }
 
-    public function updateChapitre(Request $request, $id)
+    public function updateChapitre(Request $request, $idMod, $idChap)
     {
-        $chapitre = Chapitre::find($id);
+        $chapitre = Chapitre::find($idChap);
 
         if (is_null($chapitre))
-            return response()->json(['message' => 'pas de Chapitre a l\'id' . $id], 404);
+            return response()->json(['message' => 'pas de Chapitre a l\'id' . $idChap], 404);
 
         $chapitre->update($request->all());
         return response()->json($chapitre);
