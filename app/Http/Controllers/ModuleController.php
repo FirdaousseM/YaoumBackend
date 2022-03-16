@@ -7,18 +7,18 @@ use App\Models\Module;
 
 class ModuleController extends Controller
 {
-    public function getAllModules()
+    public function getAllModulesByIdProg($idProg)
     {
-        return response()->json(Module::all());
+        return response()->json(Module::all()->where('id_programme' , $idProg));
     }
 
-    public function getModuleById($id)
+    public function getModuleById($idProg, $idMod)
     {
 
         $module = array();
-        array_push($module, Module::find($id));
+        array_push($module, Module::where('id_programme' , $idProg)->find($idMod));
 
-        foreach(ChapitreController::getAllChapitresByIdModule($id) as $chapitre){
+        foreach(ChapitreController::getAllChapitresByIdModule($idMod) as $chapitre){
             array_push($module, $chapitre);
         }
         
@@ -47,9 +47,9 @@ class ModuleController extends Controller
         return response()->json($module);
     }
 
-    public function deleteModule($id)
+    public function deleteModule($idProg, $idMod)
     {
-        $module = Module::find($id);
+        $module = Module::find($idMod);
 
         if (is_null($module))
             return response()->json(['message' => 'pas de module pour cette id'], 404);

@@ -24,8 +24,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 /*** PROGRAMMES ***/
 
-//' '';
-/*
+//$adresseProgrammes = '';
+
 // Créer un Programme
 Route::post('programmes/create',[ProgrammeController::class,'createProgramme']);
 // Afficher tous les programmes
@@ -37,21 +37,21 @@ Route::put('programmes/{id}/edit',[ProgrammeController::class,'updateProgramme']
 // Supprimer un programme
 Route::delete('programmes/{id}/edit',[ProgrammeController::class,'deleteProgramme']);
 
-*/
+
 /*** MODULES ***/
 
-//' 'programmes/{idProg}';
+$adresseProgrammes = 'programmes/{idProg}/';
 
 // Créer un module
-Route::post('modules/create',[ModuleController::class,'createModule']);
+Route::post($adresseProgrammes.'modules/create',[ModuleController::class,'createModule']);
 // Afficher tous les modules
-Route::get('modules',[ModuleController::class,'getAllModules']);
+Route::get($adresseProgrammes.'modules',[ModuleController::class,'getAllModulesByIdProg']);
 // Afficher un module selon l'id
-Route::get('modules/{id}',[ModuleController::class,'getModuleById']);
+Route::get($adresseProgrammes.'modules/{id}',[ModuleController::class,'getModuleById']);
 // Update un module
-Route::put('modules/{id}/edit',[ModuleController::class,'updateModule']);
+Route::put($adresseProgrammes.'modules/{id}/edit',[ModuleController::class,'updateModule']);
 // Supprimer un module
-Route::delete('modules/{id}/edit',[ModuleController::class,'deleteModule']);
+Route::delete($adresseProgrammes.'modules/{id}/edit',[ModuleController::class,'deleteModule']);
 
 /*** CHAPITRES ***/
 
