@@ -47,9 +47,9 @@ class ModuleController extends Controller
         return response()->json($module);
     }
 
-    public function deleteModule($id)
+    public function deleteModule($idProg, $idMod)
     {
-        $module = Module::find($id);
+        $module = Module::find($idMod);
 
         if (is_null($module))
             return response()->json(['message' => 'pas de module pour cette id'], 404);
