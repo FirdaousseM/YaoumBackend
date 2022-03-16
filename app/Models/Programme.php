@@ -10,7 +10,7 @@ class Programme extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['titre','description','domaine',];
+    protected $fillable = ['titre','description','domaine'];
 
 
 }

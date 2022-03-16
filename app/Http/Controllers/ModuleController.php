@@ -12,13 +12,13 @@ class ModuleController extends Controller
         return response()->json(Module::all()->where('id_programme' , $idProg));
     }
 
-    public function getModuleById($id)
+    public function getModuleById($idProg, $idMod)
     {
 
         $module = array();
-        array_push($module, Module::find($id));
+        array_push($module, Module::where('id_programme' , $idProg)->find($idMod));
 
-        foreach(ChapitreController::getAllChapitresByIdModule($id) as $chapitre){
+        foreach(ChapitreController::getAllChapitresByIdModule($idMod) as $chapitre){
             array_push($module, $chapitre);
         }
         

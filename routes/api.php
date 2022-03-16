@@ -40,7 +40,7 @@ Route::delete('programmes/{id}/edit',[ProgrammeController::class,'deleteProgramm
 
 /*** MODULES ***/
 
-$adresseProgrammes = 'programmes/{idProg}';
+$adresseProgrammes = 'programmes/{idProg}/';
 
 // Créer un module
 Route::post($adresseProgrammes.'modules/create',[ModuleController::class,'createModule']);
