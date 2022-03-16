@@ -7,9 +7,9 @@ use App\Models\Module;
 
 class ModuleController extends Controller
 {
-    public function getAllModules()
+    public function getAllModulesByIdProg($idProg)
     {
-        return response()->json(Module::all());
+        return response()->json(Module::all()->where('id_programme' , $idProg));
     }
 
     public function getModuleById($id)
