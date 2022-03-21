@@ -9,6 +9,6 @@ class Module extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['titre','description','id_prog'];
+    protected $fillable = ['titre','description','id_programme'];
 
 }

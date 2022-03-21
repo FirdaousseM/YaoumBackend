@@ -31,7 +31,7 @@ class ModuleController extends Controller
 
     public function createModule(Request $requete)
     {
-
+        
         $module = Module::create($requete->all());
         return response($module);
     }

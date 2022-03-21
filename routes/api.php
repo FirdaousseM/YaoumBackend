@@ -25,7 +25,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 /*** PROGRAMMES ***/
 
 //' '';
-/*
+
 // Créer un Programme
 Route::post('programmes/create',[ProgrammeController::class,'createProgramme']);
 // Afficher tous les programmes
@@ -37,7 +37,7 @@ Route::put('programmes/{id}/edit',[ProgrammeController::class,'updateProgramme']
 // Supprimer un programme
 Route::delete('programmes/{id}/edit',[ProgrammeController::class,'deleteProgramme']);
 
-*/
+
 /*** MODULES ***/
 
 //' 'programmes/{idProg}';
