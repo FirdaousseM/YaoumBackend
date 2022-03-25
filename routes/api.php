@@ -18,10 +18,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+/*
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-
+*/
 
 /*** PROGRAMMES ***/
 
@@ -30,6 +31,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::group(['middleware' => ['auth:sanctum']], function () {
     // Deconnexion utilisateur
     Route::post('logout', [UserController::class, 'logout']);
+
+    //Route::get('account', [UserController::class, 'account']);
 });
 
 // Inscription nouvel utilisateur
