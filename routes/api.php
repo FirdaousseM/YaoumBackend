@@ -3,6 +3,7 @@
 use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\ChapitreController;
 use App\Http\Controllers\ProgrammeController;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,63 +18,70 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+/*
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+*/
 
+
+/*** USER ***/
+
+Route::group(['middleware' => 'api'], function ($router) {
+    // Inscription
+    Route::post('/register', [UserController::class, 'register']);
+    // Connexion
+    Route::post('/login', [UserController::class, 'login']);
+    // Deconnexion
+    Route::post('/logout', [UserController::class, 'logout']);
+    // ??
+    Route::post('/refresh', [UserController::class, 'refresh']);
+    // Consulter son compte
+    Route::post('/profile', [UserController::class, 'profile']);
+});
 
 /*** PROGRAMMES ***/
 
 //' '';
-/*
 // Créer un Programme
-Route::post('programmes/create',[ProgrammeController::class,'createProgramme']);
+Route::post('programmes/create', [ProgrammeController::class, 'createProgramme']);
 // Afficher tous les programmes
-Route::get('programmes',[ProgrammeController::class,'getAllProgrammes']);
+Route::get('programmes', [ProgrammeController::class, 'getAllProgrammes']);
 // Afficher programme selon l'id
-Route::get('programmes/{id}',[ProgrammeController::class,'getProgrammeById']);
+Route::get('programmes/{id}', [ProgrammeController::class, 'getProgrammeById']);
 // Update un programme
-Route::put('programmes/{id}/edit',[ProgrammeController::class,'updateProgramme']);
+Route::put('programmes/{id}/edit', [ProgrammeController::class, 'updateProgramme']);
 // Supprimer un programme
-Route::delete('programmes/{id}/edit',[ProgrammeController::class,'deleteProgramme']);
+Route::delete('programmes/{id}/edit', [ProgrammeController::class, 'deleteProgramme']);
 
-*/
 /*** MODULES ***/
 
 //' 'programmes/{idProg}';
 
 // Créer un module
-Route::post('modules/create',[ModuleController::class,'createModule']);
+Route::post('modules/create', [ModuleController::class, 'createModule']);
 // Afficher tous les modules
-Route::get('modules',[ModuleController::class,'getAllModules']);
+Route::get('modules', [ModuleController::class, 'getAllModules']);
 // Afficher un module selon l'id
-Route::get('modules/{id}',[ModuleController::class,'getModuleById']);
+Route::get('modules/{id}', [ModuleController::class, 'getModuleById']);
 // Update un module
-Route::put('modules/{id}/edit',[ModuleController::class,'updateModule']);
+Route::put('modules/{id}/edit', [ModuleController::class, 'updateModule']);
 // Supprimer un module
-Route::delete('modules/{id}/edit',[ModuleController::class,'deleteModule']);
+Route::delete('modules/{id}/edit', [ModuleController::class, 'deleteModule']);
 
 /*** CHAPITRES ***/
 
 $adresseModules = '';
 
 // get ordreDoc
-Route::get('modules/{idMod}/edit/content/create', [ChapitreController::class, 'getOrdreDoc']); 
+Route::get('modules/{idMod}/edit/content/create', [ChapitreController::class, 'getOrdreDoc']);
 // Créer un chapitre
-Route::post('modules/{id}/edit/content/create',[ChapitreController::class,'createChapitre']);
+Route::post('modules/{id}/edit/content/create', [ChapitreController::class, 'createChapitre']);
 // get les chapitres d'un module à editer
-Route::get('modules/{id}/edit/content',[ChapitreController::class,'getAllChapitresEditable']);
+Route::get('modules/{id}/edit/content', [ChapitreController::class, 'getAllChapitresEditable']);
 // get un chapitre par idChap
-Route::get('modules/{idMod}/edit/content/{idChap}',[ChapitreController::class,'getChapitre']);
+Route::get('modules/{idMod}/edit/content/{idChap}', [ChapitreController::class, 'getChapitre']);
 // Update un chapitre
-Route::put('modules/{idMod}/edit/content/{idChap}',[ChapitreController::class,'updateChapitre']);
+Route::put('modules/{idMod}/edit/content/{idChap}', [ChapitreController::class, 'updateChapitre']);
 // Supprimer un chapitre
-Route::delete('modules/{idMod}/edit/content/{idChap}',[ChapitreController::class,'deleteChapitre']);
-
-
-
-
-
-
-
-
+Route::delete('modules/{idMod}/edit/content/{idChap}', [ChapitreController::class, 'deleteChapitre']);
