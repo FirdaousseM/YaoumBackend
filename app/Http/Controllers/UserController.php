@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-    
+
     public function register(Request $requete)
     {
 
@@ -29,17 +29,17 @@ class UserController extends Controller
 
         $token = $user->createToken('yaoumtoken')->plainTextToken;
 
-        $compte = [
+        $session_user = [
             'user' => $user,
             'token' => $token
         ];
 
-        return response($compte);
+        return response($session_user);
     }
 
-    public function login(Request $request)
+    public function login(Request $requete)
     {
-        $fields = $request->validate([
+        $fields = $requete->validate([
             'email' => ['required', 'string'],
             'password' => ['required', 'string']
         ]);
@@ -56,21 +56,27 @@ class UserController extends Controller
 
         $token = $user->createToken('yaoumtoken')->plainTextToken;
 
-        $response = [
+        $session_user = [
             'user' => $user,
             'token' => $token
         ];
 
-        return response($response, 201);
+        return response($session_user, 201);
     }
 
-    public function logout(Request $request)
+    public function logout(Request $requete)
     {
-        echo $request;
-        $request->user()->currentAccessToken()->delete();
+        $requete->user()->currentAccessToken()->delete();
 
         return [
             'message' => 'Deconnecté'
         ];
+    }
+
+    
+    public function getAccount(Request $requete)
+    {
+
+
     }
 }

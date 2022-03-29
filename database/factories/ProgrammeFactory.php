@@ -16,7 +16,8 @@ class ProgrammeFactory extends Factory
         return [
             'titre' => $this->faker->sentence(5),
             'description' => $this->faker->unique()->sentence(12),
-            'domaine' => $this->faker->word() 
+            'domaine' => $this->faker->word(),
+            'id_user' => $this->faker->numberBetween(1, 10) 
         ];
     }
 }

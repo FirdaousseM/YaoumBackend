@@ -18,7 +18,8 @@ class ModuleFactory extends Factory
         return [
             'titre' => $this->faker->sentence(3),
             'description' => $this->faker->unique()->sentence(12),
-            'id_programme' => $this->faker->numberBetween(1,5)
+            'id_programme' => $this->faker->numberBetween(1, 15),
+            'id_user' => $this->faker->numberBetween(1, 10)
         ];
     }
 }
